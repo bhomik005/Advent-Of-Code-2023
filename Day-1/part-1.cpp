@@ -30,3 +30,4 @@ int main() {
 	cout << totalSum << endl;
 	return 0;
 }
+
