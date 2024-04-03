@@ -28,6 +28,5 @@ int main() {
 		totalSum += stoi(fLDigit);
 	}
 	cout << totalSum << endl;
-	return 0;
+	return 0;	
 }
-
