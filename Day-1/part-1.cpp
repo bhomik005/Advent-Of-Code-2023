@@ -1,32 +1,37 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-	string s;
-	long int totalSum = 0;
-	while (true) {
-		getline(cin, s);
-		if (s.empty()) break;
-		char firstDigit, lastDigit;
-		bool first = false;
-		bool last = false;
-		for (int i = 0; i < s.size(); ++i) {
-			if (first == false && isdigit(s[i])) {
-				first = true;
-				firstDigit = s[i];
-			}
-			else if (isdigit(s[i])) {
-				last = true;
-				lastDigit = s[i];
-			}
-		}
-		if (last == false) lastDigit = firstDigit;
-		string fLDigit;
-		fLDigit += firstDigit;
-		fLDigit += lastDigit;
-		totalSum += stoi(fLDigit);
-	}
-	cout << totalSum << endl;
-	return 0;	
+    string input;
+    int total = 0;
+    while(true){
+        getline(cin, input);
+        if(input.empty()) break;
+        char firstDigit = ' ';
+        bool firstDigitFlag = false;
+        bool lastDigitFlag = false;
+        char lastDigit = ' ';
+        // process the input
+        for(int i = 0; i < input.length(); ++i) {
+            if(isdigit(input[i])) {
+                if(firstDigitFlag == false) {
+                    firstDigit = input[i];
+                    firstDigitFlag = true;
+                }
+                else {
+                    lastDigit = input[i];
+                    lastDigitFlag = true;
+                }
+            }
+            if(lastDigitFlag == false) lastDigit = firstDigit;
+        }
+        string num = "";
+        num += firstDigit;
+        num += lastDigit;
+        int val = stoi(num);
+        total += val;
+    }
+    cout << total << "\n";
+    return 0;
 }
